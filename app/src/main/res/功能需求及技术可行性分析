@@ -1,0 +1,23 @@
+功能：
+    可以罗列出全国所有的省市县
+    可以查看全国任意城市的天气信息
+    可以自由的切换城市，去查看其它城市的天气
+    提供手动更新以及后台自动更新天气的功能
+
+ 接口：
+    全国所有的城市的天气信息
+        http://guolin.tech/api/china
+    具体的城市的天气信息
+        http://guolin.tech//api/china/xx
+    具体的一个城市下的县区信息：
+        http://guolin.tech/api/china/xx/xx
+
+ github版本控制，代码托管：
+    1、在github网站上新建一个项目，自动生成readme等三个文件，复制路径
+    2、在Android studio 中创建一个项目，在对应的工作空间中git brash here
+    3、git clone https://github.com/uwoahc/项目名.git
+    4、在得到的文件夹中复制所有的文件到上一层目录中（覆盖）
+    5、返回本地项目工作空间，提交本地自动创建的代码
+        git add .
+        git commit -m "First Push"
+        git push origin master
