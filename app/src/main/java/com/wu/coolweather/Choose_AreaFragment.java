@@ -128,6 +128,7 @@ public class Choose_AreaFragment extends Fragment {
                 }
             }
         });
+        queryProvinces();
     }
 
     /**
