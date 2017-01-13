@@ -6,11 +6,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -59,7 +62,11 @@ public class WeatherActivity extends AppCompatActivity {
     
     private TextView sportText;
 
-    private SwipeRefreshLayout swipeRefresh;
+    public SwipeRefreshLayout swipeRefresh;
+
+    public DrawerLayout drawerLayout;
+
+    private Button navbutton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +84,9 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
 
+
+
+        setContentView(R.layout.activity_weather);
         /**
          * 初始化下拉刷新控件
          */
@@ -84,7 +94,17 @@ public class WeatherActivity extends AppCompatActivity {
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         final String weatherId;
 
-        setContentView(R.layout.activity_weather);
+        /**
+         *初始化侧滑菜单和button
+         */
+        drawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
+        navbutton= (Button) findViewById(R.id.nav_button);
+        navbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
         //初始化每日一图的背景图片
         bingPicImg= (ImageView) findViewById(R.id.bing_pic_img);
 
@@ -168,7 +188,7 @@ public class WeatherActivity extends AppCompatActivity {
      * 根据天气id请求天气信息
      * @param weatherId
      */
-    private void requestWeather(String weatherId)
+    public void requestWeather(String weatherId)
     {
         String weatherUrl="http://guolin.tech/api/weather?cityid="+weatherId+"&key=2f7a3c79327f4eb083dfda4d133d6140";
         Log.e("TAG", "requestWeather: "+weatherUrl );
